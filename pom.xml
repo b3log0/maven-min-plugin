@@ -63,9 +63,9 @@
     </prerequisites>
     
     <scm>
-        <connection>scm:git:git@github.com:b3log/b3log-latke.git</connection>
-        <developerConnection>scm:git:git@github.com:b3log/b3log-latke.git</developerConnection>
-        <url>git@github.com:b3log/b3log-latke.git</url>
+        <connection>scm:git:git@github.com:b3log/maven-min-plugin.git</connection>
+        <developerConnection>scm:git:git@github.com:b3log/maven-min-plugin.git</developerConnection>
+        <url>git@github.com:b3log/maven-min-plugin.git</url>
     </scm>
 
     <dependencies>
