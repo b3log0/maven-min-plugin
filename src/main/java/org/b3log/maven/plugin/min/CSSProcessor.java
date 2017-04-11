@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012, B3log Team
+ * Copyright (c) 2011-2017, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,23 +15,17 @@
  */
 package org.b3log.maven.plugin.min;
 
-import java.io.IOException;
-import java.io.Reader;
-import java.io.Writer;
-import org.apache.maven.plugin.logging.Log;
 import com.yahoo.platform.yui.compressor.CssCompressor;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
+import org.apache.maven.plugin.logging.Log;
+
+import java.io.*;
 
 /**
  * Processor for compressing CSS sources.
- * 
+ *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
- * @version 1.0.0.2, Aug 29, 2012
+ * @version 1.0.1.2, Apr 11, 2017
+ * @since 1.0.0
  */
 public final class CSSProcessor extends SourcesProcessor {
 
@@ -55,7 +49,8 @@ public final class CSSProcessor extends SourcesProcessor {
             final File[] srcFiles = srcDir.listFiles(new FileFilter() {
                 @Override
                 public boolean accept(final File file) {
-                    return !file.isDirectory() && !file.getName().endsWith(getSuffix() + ".css");
+                    final String name = file.getName();
+                    return !file.isDirectory() && name.endsWith(".css") && !name.endsWith(getSuffix() + ".css");
                 }
             });
 
