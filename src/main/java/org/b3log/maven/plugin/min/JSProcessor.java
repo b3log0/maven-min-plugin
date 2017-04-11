@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012, B3log Team
+ * Copyright (c) 2011-2017, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -16,24 +16,19 @@
 package org.b3log.maven.plugin.min;
 
 import com.yahoo.platform.yui.compressor.JavaScriptCompressor;
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.List;
 import org.apache.maven.plugin.logging.Log;
 import org.codehaus.plexus.util.IOUtil;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Processor for compressing JavaScript sources.
- * 
+ *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
  * @version 1.0.0.3, Aug 29, 2012
+ * @since 1.0.0
  */
 public class JSProcessor extends SourcesProcessor {
 

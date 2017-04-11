@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012, B3log Team
+ * Copyright (c) 2011-2017, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -21,9 +21,10 @@ import org.mozilla.javascript.EvaluatorException;
 
 /**
  * Reports any error occurring during JavaScript sources compression.
- * 
+ *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
  * @version 1.0.0.0, Jun 26, 2011
+ * @since 1.0.0
  */
 public final class JavaScriptErrorReporter implements ErrorReporter {
 

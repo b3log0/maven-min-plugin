@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012, B3log Team
+ * Copyright (c) 2011-2017, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,14 +15,16 @@
  */
 package org.b3log.maven.plugin.min;
 
-import java.io.File;
 import org.apache.maven.plugin.logging.Log;
+
+import java.io.File;
 
 /**
  * Abstract sources processing task for compression (minimization).
- * 
+ *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
  * @version 1.0.0.2, Sep 3, 2011
+ * @since 1.0.0
  */
 public abstract class SourcesProcessor implements Runnable {
 
@@ -32,18 +34,17 @@ public abstract class SourcesProcessor implements Runnable {
     private String suffix;
 
     /**
-     * Constructs a sources process withe the specified logger, sources 
+     * Constructs a sources process withe the specified logger, sources
      * directory path, target directory path and target suffix.
-     * 
      * <p>
-     * Creates a directory if the target directory specified by the given target 
+     * Creates a directory if the target directory specified by the given target
      * directory path is inexistent.
      * </p>
-     * 
-     * @param logger the specified logger
-     * @param srcDir the specified sources directory path
+     *
+     * @param logger    the specified logger
+     * @param srcDir    the specified sources directory path
      * @param targetDir the specified target directory path
-     * @param suffix the specified target suffix
+     * @param suffix    the specified target suffix
      */
     public SourcesProcessor(final Log logger,
                             final String srcDir, final String targetDir,

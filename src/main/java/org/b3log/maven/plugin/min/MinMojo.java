@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011, 2012, B3log Team
+ * Copyright (c) 2011-2017, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -15,64 +15,66 @@
  */
 package org.b3log.maven.plugin.min;
 
+import org.apache.maven.plugin.AbstractMojo;
+import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
-import org.apache.maven.plugin.AbstractMojo;
-import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 
 /**
  * Goal which compress CSS and JavaScript sources.
- * 
+ *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
  * @version 1.0.0.3, Sep 3, 2011
  * @goal min
  * @phase process-resources
+ * @since 1.0.0
  */
 public final class MinMojo extends AbstractMojo {
 
     /**
      * Target directory name.
-     * 
+     *
      * @parameter expression="${min.targetDirName}" default-value=""
      */
     private String targetDirName = "";
     /**
      * CSS source directory.
-     * 
+     *
      * @parameter expression="${min.cssSourceDir}" default-value="${basedir}/src/main/webapp/css"
      */
     private String cssSourceDir;
     /**
      * CSS target directory.
-     * 
+     *
      * @parameter expression="${min.cssTargetDir}" default-value="${project.build.directory}/${project.build.finalName}/css/"
      */
     private String cssTargetDir;
     /**
      * JavaScript source directory.
-     * 
+     *
      * @parameter expression="${min.jsSourceDir}" default-value="${basedir}/src/main/webapp/js"
      */
     private String jsSourceDir;
     /**
      * JavaScript target directory.
-     * 
+     *
      * @parameter expression="${min.jsTargetDir}" default-value="${project.build.directory}/${project.build.finalName}/js/"
      */
     private String jsTargetDir;
     /**
      * Admin JavaScript sources.
-     * 
+     *
      * @parameter
      */
     private List<String> adminJSs = new ArrayList<String>();
     /**
      * The output filename suffix.
-     * 
+     *
      * @parameter expression="${min.suffix}" default-value=""
      */
     private String suffix = "";
@@ -113,15 +115,15 @@ public final class MinMojo extends AbstractMojo {
 
         final Future<?> processCSSFilesTask =
                 executor.submit(new CSSProcessor(getLog(),
-                                                 cssSourceDir,
-                                                 cssTargetDir
-                                                 + targetDirName, suffix));
+                        cssSourceDir,
+                        cssTargetDir
+                                + targetDirName, suffix));
         final Future<?> processJSFilesTask =
                 executor.submit(new JSProcessor(getLog(),
-                                                jsSourceDir,
-                                                jsTargetDir
-                                                + targetDirName,
-                                                suffix, adminJSs));
+                        jsSourceDir,
+                        jsTargetDir
+                                + targetDirName,
+                        suffix, adminJSs));
 
         try {
             if (processCSSFilesTask != null) {
