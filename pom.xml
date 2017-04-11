@@ -4,7 +4,8 @@
     Version: 1.0.0.3, Apr 11, 2017
     Author: Liang Ding
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.b3log</groupId>
@@ -14,13 +15,13 @@
     <name>Latke Min Plugin</name>
     <description>Latke application JavaScript and CSS files compression.</description>
     <inceptionYear>2011</inceptionYear>
-    
+
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
         <version>9</version>
     </parent>
-    
+
     <!-- Properties -->
     <properties>
         <maven-plugin-api.version>3.0.3</maven-plugin-api.version>
@@ -29,12 +30,12 @@
         <maven-license-plugin.version>1.9.0</maven-license-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    
+
     <organization>
         <name>B3log</name>
         <url>http://b3log.org</url>
     </organization>
-    
+
     <licenses>
         <license>
             <name>Apache License, Version 2.0</name>
@@ -61,7 +62,7 @@
     <prerequisites>
         <maven>2.2.1</maven>
     </prerequisites>
-    
+
     <scm>
         <connection>scm:git:git@github.com:b3log/maven-min-plugin.git</connection>
         <developerConnection>scm:git:git@github.com:b3log/maven-min-plugin.git</developerConnection>
@@ -82,7 +83,7 @@
             <optional>true</optional>
         </dependency>
     </dependencies>
-    
+
     <build>
         <resources>
             <resource>
@@ -92,7 +93,7 @@
                 </excludes>
             </resource>
         </resources>
-    
+
         <plugins>
             <plugin>
                 <groupId>com.mycila.maven-license-plugin</groupId>
@@ -132,7 +133,7 @@
                     </execution>
                 </executions>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -143,13 +144,22 @@
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-            
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-resources-plugin</artifactId>
                 <version>2.5</version>
                 <configuration>
                     <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <additionalparam>-Xdoclint:none</additionalparam>
                 </configuration>
             </plugin>
         </plugins>
