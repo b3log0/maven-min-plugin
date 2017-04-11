@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     Description: Latke Min Plugin POM.
-    Version: 1.0.0.2, Jul 1, 2014
+    Version: 1.0.0.3, Apr 11, 2017
     Author: Liang Ding
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
@@ -24,7 +24,7 @@
     <!-- Properties -->
     <properties>
         <maven-plugin-api.version>3.0.3</maven-plugin-api.version>
-        <yuicompressor.version>2.4.6</yuicompressor.version>
+        <yuicompressor.version>2.4.8</yuicompressor.version>
         <!-- maven plugin -->
         <maven-license-plugin.version>1.9.0</maven-license-plugin.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -32,7 +32,7 @@
     
     <organization>
         <name>B3log</name>
-        <url>http://www.b3log.org</url>
+        <url>http://b3log.org</url>
     </organization>
     
     <licenses>
@@ -53,7 +53,7 @@
                 <role>Initial Committer</role>
             </roles>
             <organization>B3log</organization>
-            <organizationUrl>http://www.b3log.org</organizationUrl>
+            <organizationUrl>http://b3log.org</organizationUrl>
             <timezone>+8</timezone>
         </developer>
     </developers>
@@ -118,8 +118,8 @@
                     </mapping>
                     <useDefaultMapping>true</useDefaultMapping>
                     <properties>
-                        <year>2011, 2012</year>
-                        <devTeam>B3log Team</devTeam>
+                        <year>2011-2017</year>
+                        <devTeam>b3log.org &amp; hacpai.com</devTeam>
                     </properties>
                     <encoding>UTF-8</encoding>
                 </configuration>
