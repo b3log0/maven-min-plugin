@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, b3log.org & hacpai.com
+ * Copyright (c) 2011-2018, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import java.io.*;
  * Processor for compressing CSS sources.
  *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
- * @version 1.0.1.2, Apr 11, 2017
+ * @version 1.0.2.0, Jul 5, 2018
  * @since 1.0.0
  */
 public final class CSSProcessor extends SourcesProcessor {
@@ -46,12 +46,9 @@ public final class CSSProcessor extends SourcesProcessor {
 
         try {
             final File srcDir = getSrcDir();
-            final File[] srcFiles = srcDir.listFiles(new FileFilter() {
-                @Override
-                public boolean accept(final File file) {
-                    final String name = file.getName();
-                    return !file.isDirectory() && name.endsWith(".css") && !name.endsWith(getSuffix() + ".css");
-                }
+            final File[] srcFiles = srcDir.listFiles(file -> {
+                final String name = file.getName();
+                return !file.isHidden() && !file.isDirectory() && name.endsWith(".css") && !name.endsWith(getSuffix() + ".css") && name.endsWith(".css");
             });
 
             for (int i = 0; i < srcFiles.length; i++) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2011-2017, b3log.org & hacpai.com
+ * Copyright (c) 2011-2018, b3log.org & hacpai.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import java.util.List;
  * Processor for compressing JavaScript sources.
  *
  * @author <a href="http://88250.b3log.org">Liang Ding</a>
- * @version 1.0.0.3, Aug 29, 2012
+ * @version 1.0.1.0, Jul 5, 2018
  * @since 1.0.0
  */
 public class JSProcessor extends SourcesProcessor {
@@ -58,11 +58,10 @@ public class JSProcessor extends SourcesProcessor {
             final File srcDir = getSrcDir();
             processAdminJS(srcDir);
 
-            final File[] srcFiles = srcDir.listFiles(new FileFilter() {
-                @Override
-                public boolean accept(final File file) {
-                    return !file.isDirectory() && !file.getName().endsWith(getSuffix() + ".js");
-                }
+            final File[] srcFiles = srcDir.listFiles(file -> {
+                final String name = file.getName();
+
+                return !file.isHidden() && !file.isDirectory() && !name.endsWith(getSuffix() + ".js") && name.endsWith(".js");
             });
 
             for (int i = 0; i < srcFiles.length; i++) {
@@ -77,8 +76,7 @@ public class JSProcessor extends SourcesProcessor {
                 final FileOutputStream writerStream = new FileOutputStream(target);
                 final Writer writer = new OutputStreamWriter(writerStream, "UTF-8");
 
-                final JavaScriptCompressor compressor = new JavaScriptCompressor(
-                        reader, new JavaScriptErrorReporter(getLogger(), src.getName()));
+                final JavaScriptCompressor compressor = new JavaScriptCompressor(reader, new JavaScriptErrorReporter(getLogger(), src.getName()));
                 compressor.compress(writer, -1, munge, verbose, preserveAllSemiColons, disableOptimizations);
 
                 reader.close();
@@ -96,7 +94,7 @@ public class JSProcessor extends SourcesProcessor {
 
         final File adminDir = new File(srcDir + File.separator + "admin");
 
-        final List<File> adminJSList = new ArrayList<File>();
+        final List<File> adminJSList = new ArrayList<>();
         for (final String adminJS : adminJSs) {
             final File adminJSFile = new File(adminDir.getPath() + File.separator + adminJS);
             adminJSList.add(adminJSFile);
